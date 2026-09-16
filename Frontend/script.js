@@ -16,9 +16,9 @@ const isLocal =
     window.location.hostname === "localhost" ||
     window.location.hostname === "127.0.0.1";
 
-const API_BASE = isLocal
+    const API_BASE = isLocal
     ? "http://localhost:5001"
-    : "https://REPLACE-WITH-YOUR-DEPLOYED-BACKEND-URL.onrender.com";
+    : "https://careertrack-backend-l20o.onrender.com";
 
 const API_URL = `${API_BASE}/api/applications`;
 
