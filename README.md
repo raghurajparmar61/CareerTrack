@@ -51,15 +51,16 @@ cp ../.env.example .env
 
 Open `.env` and fill in your real values:
 
-`MONGODB_URI=your_mongodb_connection_string`
-`GEMINI_API_KEY=your_gemini_api_key`
-
+​```
+MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+​```
 
 Start the backend:
 
-```bash
+​```bash
 node server.js
-```
+​```
 
 You should see `MongoDB connected successfully!` and `CareerTrack server running on http://localhost:5001` in the terminal.
 
