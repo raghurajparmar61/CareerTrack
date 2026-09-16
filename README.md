@@ -51,6 +51,9 @@ cp ../.env.example .env
 
 Open `.env` and fill in your real values:
 
+`MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key`
+
 
 Start the backend:
 
