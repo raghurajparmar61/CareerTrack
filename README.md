@@ -3,8 +3,8 @@
 A dashboard for tracking internship and job applications, with an AI-powered
 resume analyzer that compares your resume against a job description.
 
-**Live demo:** [add your deployed frontend link here]
-**Backend API:** [add your deployed backend link here]
+**Live demo:** [https://careertrack-raghuraj.netlify.app/]
+**Backend API:** [https://careertrack-backend-l20o.onrender.com/]
 
 <!-- Add a screenshot once the UI is deployed, e.g.: -->
 <!-- ![CareerTrack dashboard](./screenshot.png) -->
