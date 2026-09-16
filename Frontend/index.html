@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerTrack</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">CT</span>
+                <span class="brand-text">CareerTrack</span>
+            </a>
+
+            <nav class="nav">
+                <a href="index.html" class="nav-link is-active">Dashboard</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main class="page">
+
+        <!-- Hero: pipeline overview -->
+
+        <section class="hero">
+
+            <div class="hero-top">
+
+                <div class="hero-head">
+                    <h1>Career dashboard</h1>
+                    <p>Every internship and job application, from first click to final offer.</p>
+                </div>
+
+                <div class="hero-total">
+                    <span class="hero-total-value" id="stat-total">0</span>
+                    <span class="hero-total-label">applications tracked</span>
+                </div>
+
+            </div>
+
+            <ol class="pipeline">
+
+                <li class="stage stage-applied">
+                    <span class="stage-count" id="stat-applied">0</span>
+                    <span class="stage-name">Applied</span>
+                </li>
+
+                <li class="stage stage-oa">
+                    <span class="stage-count" id="stat-oa">0</span>
+                    <span class="stage-name">Online assessment</span>
+                </li>
+
+                <li class="stage stage-interview">
+                    <span class="stage-count" id="stat-interview">0</span>
+                    <span class="stage-name">Interview</span>
+                </li>
+
+                <li class="stage stage-selected">
+                    <span class="stage-count" id="stat-selected">0</span>
+                    <span class="stage-name">Selected</span>
+                </li>
+
+                <li class="stage stage-rejected">
+                    <span class="stage-count" id="stat-rejected">0</span>
+                    <span class="stage-name">Rejected</span>
+                </li>
+
+            </ol>
+
+            <div class="ratio" id="ratio-bar" aria-hidden="true">
+                <span class="ratio-seg seg-applied"></span>
+                <span class="ratio-seg seg-oa"></span>
+                <span class="ratio-seg seg-interview"></span>
+                <span class="ratio-seg seg-selected"></span>
+                <span class="ratio-seg seg-rejected"></span>
+            </div>
+
+        </section>
+
+
+        <!-- Main layout -->
+
+        <section class="layout">
+
+
+            <div class="column-left">
+
+                <!-- Add application -->
+
+                <article class="panel panel-form">
+
+                    <h2>Add application</h2>
+
+                    <form id="application-form">
+
+                        <label>
+                            Company
+                            <input type="text" name="company" placeholder="Google" required>
+                        </label>
+
+                        <label>
+                            Position
+                            <input type="text" name="position" placeholder="Software Engineer Intern" required>
+                        </label>
+
+                        <label>
+                            Job link
+                            <input type="url" name="jobUrl" placeholder="https://...">
+                        </label>
+
+                        <label>
+                            Application date
+                            <input type="date" name="date" required>
+                        </label>
+
+                        <label>
+                            Status
+                            <select name="status" required>
+                                <option value="Applied">Applied</option>
+                                <option value="Online Assessment">Online Assessment</option>
+                                <option value="Interview">Interview</option>
+                                <option value="Selected">Selected</option>
+                                <option value="Rejected">Rejected</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Notes
+                            <textarea name="notes" rows="4"
+                                placeholder="Referral, deadline, interview notes..."></textarea>
+                        </label>
+
+                        <button type="submit" class="btn-primary">Add application</button>
+
+                    </form>
+
+                </article>
+
+
+                <!-- Progress -->
+
+                <article class="panel panel-progress">
+
+                    <h2>Progress</h2>
+
+                    <ul class="metrics">
+
+                        <li class="metric">
+                            <div class="metric-head">
+                                <span>Heard back</span>
+                                <span class="metric-value" id="rate-response">0%</span>
+                            </div>
+                            <div class="meter">
+                                <span class="meter-fill fill-response" id="meter-response"></span>
+                            </div>
+                        </li>
+
+                        <li class="metric">
+                            <div class="metric-head">
+                                <span>Reached interview</span>
+                                <span class="metric-value" id="rate-interview">0%</span>
+                            </div>
+                            <div class="meter">
+                                <span class="meter-fill fill-interview" id="meter-interview"></span>
+                            </div>
+                        </li>
+
+                        <li class="metric">
+                            <div class="metric-head">
+                                <span>Offers</span>
+                                <span class="metric-value" id="rate-offer">0%</span>
+                            </div>
+                            <div class="meter">
+                                <span class="meter-fill fill-offer" id="meter-offer"></span>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                    <div class="in-play">
+
+                        <h3>Still in play</h3>
+
+                        <ul class="in-play-list" id="in-play-list"></ul>
+
+                        <p class="in-play-empty" id="in-play-empty">
+                            Nothing at the assessment or interview stage right now.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="column-right">
+
+            <!-- Applications table -->
+
+            <article class="panel panel-table">
+
+                <div class="panel-head">
+
+                    <h2>Applications</h2>
+
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+                        </svg>
+                        <input type="text" id="search-input" placeholder="Search company or position">
+                    </div>
+
+                </div>
+
+                <div class="table-wrap">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Position</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th class="col-action">Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="applications-body"></tbody>
+
+                    </table>
+
+                </div>
+
+                <p class="empty-state" id="empty-state" hidden>
+                    Nothing here yet. Add your first application from the form on the left.
+                </p>
+
+            </article>
+
+
+            <!-- AI resume analyzer -->
+
+            <section class="panel ai-section">
+
+            <div class="panel-head">
+                <h2>Resume analyzer</h2>
+                <p class="panel-sub">Paste a posting and your resume to see what the role asks for that you haven't
+                    shown yet.</p>
+            </div>
+
+            <div class="ai-form">
+
+                <div class="form-group">
+                    <label for="resume">Your resume</label>
+                    <textarea id="resume" rows="8" placeholder="Paste your resume text here..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="job-description">Job description</label>
+                    <textarea id="job-description" rows="8" placeholder="Paste the job description here..."></textarea>
+                </div>
+
+            </div>
+
+            <button id="analyze-btn" class="btn-primary btn-analyze">Analyze resume</button>
+
+            <div id="ai-result" hidden>
+
+                <div class="score-card">
+
+                    <div class="score-ring" id="score-ring">
+                        <div class="score-inner">
+                            <span class="score-value"><span id="match-score">0</span><span
+                                    class="score-unit">%</span></span>
+                        </div>
+                    </div>
+
+                    <div class="score-copy">
+                        <h3>Match score</h3>
+                        <p>How closely your resume lines up with this role, based on the skills and keywords in the
+                            posting.</p>
+                    </div>
+
+                </div>
+
+                <div class="ai-results-grid">
+
+                    <div class="result-card result-match">
+                        <h4>Skills you already have</h4>
+                        <ul id="matching-skills"></ul>
+                    </div>
+
+                    <div class="result-card result-missing">
+                        <h4>Skills the role asks for</h4>
+                        <ul id="missing-skills"></ul>
+                    </div>
+
+                </div>
+
+                <div class="result-card suggestions-card">
+                    <h4>What to improve</h4>
+                    <ul id="suggestions"></ul>
+                </div>
+
+            </div>
+
+            </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
