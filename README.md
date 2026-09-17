@@ -3,8 +3,8 @@
 A dashboard for tracking internship and job applications, with an AI-powered
 resume analyzer that compares your resume against a job description.
 
-**Live demo:** [add your deployed frontend link here]
-**Backend API:** [add your deployed backend link here]
+**Live demo:** [https://careertrack-raghuraj.netlify.app/]
+**Backend API:** [https://careertrack-backend-l20o.onrender.com/]
 
 <!-- Add a screenshot once the UI is deployed, e.g.: -->
 <!-- ![CareerTrack dashboard](./screenshot.png) -->
@@ -32,42 +32,45 @@ resume analyzer that compares your resume against a job description.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/raghurajparmar61/CareerTrack.git
+cd CareerTrack
 ```
 
 ### 2. Backend setup
 
 ```bash
+cd Backend
 npm install
 ```
 
-Copy `.env.example` to `.env` and fill in your own values:
+Copy the `.env.example` file (in the repo root) into the `Backend` folder and rename it to `.env`:
 
 ```bash
-cp .env.example .env
+cp ../.env.example .env
 ```
 
-```
+Open `.env` and fill in your real values:
+
+​```
 MONGODB_URI=your_mongodb_connection_string
 GEMINI_API_KEY=your_gemini_api_key
-```
+​```
 
 Start the backend:
 
-```bash
+​```bash
 node server.js
-```
+​```
 
-You should see `MongoDB connected successfully!` and `CareerTrack server
-running on http://localhost:5001` in the terminal.
+You should see `MongoDB connected successfully!` and `CareerTrack server running on http://localhost:5001` in the terminal.
 
 ### 3. Frontend setup
 
-The frontend is static — no build step. Just open `index.html` in a
-browser, or serve it locally, e.g.:
+The frontend is static — no build step. Open `Frontend/index.html` directly
+in a browser, or serve the folder locally:
 
 ```bash
+cd ../Frontend
 npx serve .
 ```
 
