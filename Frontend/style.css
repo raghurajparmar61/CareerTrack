@@ -1,5 +1,5 @@
 /* =========================================================
-   CareerTrack â€” styles
+   CareerTrack — styles
    Ink-navy pipeline hero + quiet working surfaces below.
    ========================================================= */
 
@@ -160,7 +160,7 @@ textarea {
 }
 
 /* =========================================================
-   Hero â€” the pipeline
+   Hero — the pipeline
    ========================================================= */
 
 .hero {
@@ -889,7 +889,7 @@ td.col-action {
 }
 
 /* =========================================================
-   Hero â€” proportional stage bar + texture
+   Hero — proportional stage bar + texture
    ========================================================= */
 
 .hero::after {
@@ -1087,5 +1087,45 @@ td.col-action {
     .column-left {
         grid-template-columns: 1fr 1fr;
         align-items: start;
+    }
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+.site-footer {
+    max-width: 1180px;
+    margin: 2.5rem auto 0;
+    padding: 1.5rem 1.5rem 0;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.site-footer p {
+    margin: 0 0 .4rem;
+}
+
+.site-footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .15s ease;
+}
+
+.site-footer-links a:hover {
+    color: var(--accent);
+}
+
+.site-footer-links span {
+    margin: 0 .4rem;
+    color: var(--line);
+}
+
+@media (max-width: 760px) {
+    .site-footer {
+        padding: 1.25rem 1rem 0;
+        margin-top: 2rem;
     }
 }
